@@ -58,10 +58,14 @@ public class TicTacToeClass
     }
 
     public boolean isFull() {
+        // return True if the players have made a total of 9 combined moves.
+        // Else, false.
         return turns == 9;
     }
 
     public boolean isCat() {
+        // If both X and O have NOT won, and the board is full, return true.
+        // Else, false.
         if (!isWinner('X') && !isWinner('O') && isFull()) {
             return true;
         } else {
@@ -70,6 +74,8 @@ public class TicTacToeClass
     }
 
     public boolean isValid( int r, int c ) {
+        // If the player makes a move within the confounds of the board,
+        // and the board space is empty, return true. Else, false.
         if ( 0 <= r && r <= 2 && 0 <= c && c <= 2 && board[r][c] == ' ' )
             return true;
         else
@@ -98,6 +104,8 @@ public class TicTacToeClass
 
     // Modifiers
     public void playMove( char p, int r, int c ) {
+        // If the player makes a valid move, update the appropriate space,
+        // and add one move to the turns counter.
         if (isValid(r, c)) {
             board[r][c] = p;
             turns += 1;
